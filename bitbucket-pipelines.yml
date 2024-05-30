@@ -9,9 +9,12 @@ pipelines:
   default:
     - parallel:
       - step:
-          name: Test
+          name: Environ
           caches:
             - pip
           script:
             - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - step:
+          name: Test
+          script:
             - python manage.py test

@@ -29,6 +29,6 @@ class OperacionesTests(TestCase):
     
     """
     def test_par(self):
-        response = self.client.get(reverse('detectar_par'), {'a': "d"})
+        response = self.client.get(reverse('detectar_par'), {'a': "2"})
         self.assertEqual(response.json(), {'resultado': False})
 

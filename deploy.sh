@@ -3,9 +3,10 @@
 # Navegar al directorio de tu proyecto
 cd ~/cd_django/
 
+echo "*******git pull******"
 # Actualizar el repositorio
 git pull origin master
-
+echo "*******end git pull******"
 # Activar el entorno virtual
 source ~/cd/bin/activate
 

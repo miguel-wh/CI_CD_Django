@@ -16,4 +16,4 @@ pip install -r requirements.txt
 python manage.py migrate
 
 # Recopilar archivos estáticos
-python manage.py collectstatic --noinput
+#python manage.py collectstatic --noinput

@@ -13,9 +13,19 @@ def detectar_par(request):
     return JsonResponse({'resultado': resultado})
 
 
+# def sumar(request):
+#     a = float(request.GET.get('a', 0))
+#     b = float(request.GET.get('b', 0))
+#     resultado = a + b
+#     return JsonResponse({'resultado': resultado})
+
 def sumar(request):
-    a = float(request.GET.get('a', 0))
-    b = float(request.GET.get('b', 0))
+    try:
+        a = int(request.GET.get('a'))
+        b = int(request.GET.get('b'))
+    except (ValueError, TypeError):
+        return JsonResponse({'error': 'Los parámetros deben ser números enteros'}, status=400)
+
     resultado = a + b
     return JsonResponse({'resultado': resultado})
 

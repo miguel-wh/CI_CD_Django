@@ -3,9 +3,10 @@
 # Navegar al directorio de tu proyecto
 cd ~/cd_django/
 
+echo "*******git pull******"
 # Actualizar el repositorio
 git pull origin master
-
+echo "*******end git pull******"
 # Activar el entorno virtual
 source ~/cd/bin/activate
 
@@ -16,4 +17,4 @@ pip install -r requirements.txt
 python manage.py migrate
 
 # Recopilar archivos estáticos
-python manage.py collectstatic --noinput
+#python manage.py collectstatic --noinput

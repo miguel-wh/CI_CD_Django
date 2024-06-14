@@ -30,7 +30,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan your-server-ip >> ~/.ssh/known_hosts
+        ssh-keyscan 68.183.102.190 >> ~/.ssh/known_hosts
 
     - name: Deploy to Production
       run: ssh -o StrictHostKeyChecking=no root@68.183.102.190 'bash -s' < ./deploy.sh

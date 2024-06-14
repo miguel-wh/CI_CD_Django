@@ -25,5 +25,22 @@ jobs:
     - name: Run tests
       run: python manage.py test
 
+    - name: Start SSH agent
+      id: ssh-setup
+      run: |
+        eval "$(ssh-agent -s)"
+        echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
     - name: Deploy to Production
-      run: ssh -o StrictHostKeyChecking=no root@68.183.102.190 'bash -s' < ./deploy.sh
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+      run: |
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+        chmod 644 ~/.ssh/known_hosts
+        ssh $SSH_USER@$SSH_HOST 'bash -s' < ./deploy.sh

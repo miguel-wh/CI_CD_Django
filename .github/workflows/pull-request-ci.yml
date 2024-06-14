@@ -2,6 +2,8 @@ name: CI for pull requests to develop
 
 on:
   pull_request:
+    types:
+      - opened
     branches:
       - develop
   push:

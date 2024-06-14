@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navegar al directorio de tu proyecto
-cd ~/cd_django/
+cd ~/CI_CD_Django/
 
 echo "*******Inicia - git pull******"
 # Actualizar el repositorio
@@ -9,7 +9,7 @@ git pull origin master
 echo "*******Termina - git pull******"
 
 # Activar el entorno virtual
-source ~/cd/bin/activate
+source ~/cicd/bin/activate
 
 # Instalar dependencias
 echo "*******Inicia - Instalar dependencias******"

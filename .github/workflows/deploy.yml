@@ -25,23 +25,5 @@ jobs:
     - name: Run tests
       run: python manage.py test
 
-    - name: Start SSH agent and add key
-      id: ssh-setup
-      run: |
-        echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-
     - name: Deploy to Production
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USER: ${{ secrets.SSH_USER }}
-      run: |
-        eval "$(ssh-agent -s)"
-        echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-        mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
-        ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-        chmod 644 ~/.ssh/known_hosts
-        ssh $SSH_USER@$SSH_HOST 'bash -s' < ./deploy.sh
+      run: ssh -o StrictHostKeyChecking=no root@68.183.102.190 'bash -s' < ./deploy.sh

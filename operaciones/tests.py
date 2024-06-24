@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
 # Comment
-
 class OperacionesTests(TestCase):
     def test_sumar(self):
         response = self.client.get(reverse('sumar'), {'a': 1, 'b': 2})

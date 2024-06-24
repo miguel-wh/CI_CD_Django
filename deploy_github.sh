@@ -5,7 +5,7 @@ cd ~/CI_CD_Django/
 
 echo "*******Inicia - git pull******"
 # Actualizar el repositorio
-git pull origin master
+git pull github master
 echo "*******Termina - git pull******"
 
 # Activar el entorno virtual

@@ -33,4 +33,4 @@ jobs:
         ssh-keyscan "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
     - name: Deploy to Production
-      run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < ./deploy.sh
+      run: ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < ./deploy_github.sh
